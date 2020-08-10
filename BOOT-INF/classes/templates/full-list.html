@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+	<head>
+	
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>full-list</title>
+	
+	</head>
+
+
+<body class="container">
+	
+<button type="button" class="btn btn-primary" onclick="window.location.href='/register'" >Add User</button>
+<h4>Full Student List</h4>
+<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">First Name</th>
+	      <th scope="col">Last Name</th>
+	      <th scope="col">Address</th>
+	      <th scope="col">Action</th>
+	    </tr>
+	  </thead>
+	  
+	  <tbody>
+	    <tr th:each="theList:${employee}">
+	    	<td  th:text="${theList.firstName}" />
+	    	<td  th:text="${theList.lastName}" />
+	    	<td  th:text="${theList.address}" />
+	    	
+	    	<!-- Adding Link for edit -->
+	    	<td>
+                <a th:href="@{/edit/{id}(id=${theList.id})}"
+                               class="btn btn-primary">
+                             Edit           
+                 </a>
+          
+	    	
+	    	<!-- Adding link For Delete -->
+	 
+                <a th:href="@{/delete/{id}(id=${theList.id})}"
+                               class="btn btn-primary">
+                             Delete           
+                 </a>
+           </td>
+	    	
+	    </tr>
+	  </tbody>
+</table>
+	
+	
+	</body>
+</html>
